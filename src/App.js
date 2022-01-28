@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, CoinPage } from "./Pages/index";
-import { Nav } from "./components/index";
+import { Nav, AlertTab } from "./components/index";
 import { makeStyles } from "@material-ui/core";
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
           <Route path="/coins/:id" element={<CoinPage />} />
         </Routes>
       </div>
+      <AlertTab />
     </Router>
   );
 }

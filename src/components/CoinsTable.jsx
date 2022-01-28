@@ -14,33 +14,17 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CoinList } from "../config/api";
 import { CryptoState } from "../context/CryptoContext";
 import { numberWithCommas } from "./Banner/Carousel";
 
 export const CoinsTable = () => {
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const { currency, symbol } = CryptoState();
+  const { symbol, coins, loading } = CryptoState();
 
   const navigate = useNavigate();
-
-  const fetchCoins = async () => {
-    setLoading(true);
-    const { data } = await axios.get(CoinList(currency));
-
-    setCoins(data);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchCoins();
-  }, [currency]);
 
   const darkTheme = createTheme({
     palette: {

@@ -11,6 +11,8 @@ import {
 import { makeStyles } from "@material-ui/styles";
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../context/CryptoContext";
+import { AuthModal } from "./Authentication/AuthModal";
+import { UserSidebar } from "./Authentication/UserSidebar";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -25,7 +27,7 @@ export const Nav = () => {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  const { currency, setCurrency } = CryptoState();
+  const { currency, setCurrency, user } = CryptoState();
 
   const darkTheme = createTheme({
     palette: {
@@ -48,7 +50,7 @@ export const Nav = () => {
               Laplace
             </Typography>
             <Select
-              style={{ width: 100, height: 40, marginLeft: 15 }}
+              style={{ width: 100, height: 40, marginRight: 15 }}
               variant="outlined"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
@@ -56,6 +58,7 @@ export const Nav = () => {
               <MenuItem value={"USD"}>USD</MenuItem>
               <MenuItem value={"PKR"}>PKR</MenuItem>
             </Select>
+            {user ? <UserSidebar /> : <AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>
