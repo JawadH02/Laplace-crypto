@@ -96,21 +96,19 @@ export const CoinsTable = () => {
             <Table>
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap"].map(
-                    (head) => (
-                      <TableCell
-                        style={{
-                          color: "black",
-                          fontWeight: "700",
-                          fontFamily: "Montserrat",
-                        }}
-                        key={head}
-                        align={head === "Coin" ? undefined : "right"}
-                      >
-                        {head}
-                      </TableCell>
-                    )
-                  )}
+                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                    <TableCell
+                      style={{
+                        color: "black",
+                        fontWeight: "700",
+                        fontFamily: "Montserrat",
+                      }}
+                      key={head}
+                      align={head === "Coin" ? undefined : "right"}
+                    >
+                      {head}
+                    </TableCell>
+                  ))}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -133,6 +131,7 @@ export const CoinsTable = () => {
                             src={row?.image}
                             alt={row.name}
                             height="50"
+                            draggable="false"
                             style={{ marginBottom: 10 }}
                           />
                           <div

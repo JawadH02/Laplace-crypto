@@ -49,6 +49,7 @@ export const Carousel = () => {
           src={coin?.image}
           alt={coin.name}
           height="80"
+          draggable="false"
           style={{ marginBottom: 10 }}
         />
         <span>
